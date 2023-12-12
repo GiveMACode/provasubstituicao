@@ -3,8 +3,8 @@
 namespace ProvaAPI;
 public class Calculos
 {
- public Calculos(IMC iMC){
+ public Calculos(Aluno aluno,IMC iMC ){
     
-    iMC.ValorImc = iMC.Peso / iMC.Altura * iMC.Altura; 
+    iMC.ValorImc = aluno.Peso / aluno.Altura * aluno.Altura; 
      }   
 }

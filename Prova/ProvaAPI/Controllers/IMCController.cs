@@ -2,15 +2,16 @@
 using ProvaAPI.Data;
 using ProvaAPI.Models;
 using ProvaAPI;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace ProvaAPI.Controllers;
-[Route("api/aluno")]
+[Route("api/imc")]
 [ApiController]
-public class AlunoController : ControllerBase
+public class IMCController : ControllerBase
 {
     private readonly AppDataContext _context;
-    public AlunoController(AppDataContext context) => _context = context;
+    public IMCController(AppDataContext context) => _context = context;
 
     //GET: api/aluno/listar
     [HttpGet]
@@ -18,7 +19,7 @@ public class AlunoController : ControllerBase
     public IActionResult Listar()
     {
         try{
-            List<Aluno> alunos = _context.Alunos.ToList();
+            List<Aluno> alunos = _context.Alunos.Include(x=>x.IMC).ToList();
             return Ok(alunos);
         }
         catch(Exception e){
@@ -35,7 +36,7 @@ public class AlunoController : ControllerBase
          }
           catch(Exception e){
             return BadRequest(e.Message);
-          }
 
     }
-}
+    }
+    }

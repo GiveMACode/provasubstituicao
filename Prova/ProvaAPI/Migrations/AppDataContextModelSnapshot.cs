@@ -22,6 +22,12 @@ namespace ProvaAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<float>("Altura")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("Classificacao")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("DataDeNascimento")
                         .HasColumnType("TEXT");
 
@@ -30,6 +36,9 @@ namespace ProvaAPI.Migrations
 
                     b.Property<string>("Nome")
                         .HasColumnType("TEXT");
+
+                    b.Property<float>("Peso")
+                        .HasColumnType("REAL");
 
                     b.HasKey("AlunoId");
 
@@ -41,9 +50,12 @@ namespace ProvaAPI.Migrations
                         new
                         {
                             AlunoId = 1,
+                            Altura = 115f,
+                            Classificacao = 0,
                             DataDeNascimento = "10 de Setembro de 2000",
                             IMCId = 1,
-                            Nome = "xuxu beleza"
+                            Nome = "xuxu beleza",
+                            Peso = 0f
                         });
                 });
 
@@ -53,14 +65,8 @@ namespace ProvaAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Altura")
-                        .HasColumnType("REAL");
-
                     b.Property<string>("Classificacao")
                         .HasColumnType("TEXT");
-
-                    b.Property<float>("Peso")
-                        .HasColumnType("REAL");
 
                     b.Property<float>("ValorImc")
                         .HasColumnType("REAL");
@@ -73,9 +79,7 @@ namespace ProvaAPI.Migrations
                         new
                         {
                             IMCId = 1,
-                            Altura = 115f,
                             Classificacao = "Magreza",
-                            Peso = 0f,
                             ValorImc = 0f
                         });
                 });

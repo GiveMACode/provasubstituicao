@@ -15,8 +15,6 @@ namespace ProvaAPI.Migrations
                     IMCId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ValorImc = table.Column<float>(type: "REAL", nullable: false),
-                    Peso = table.Column<float>(type: "REAL", nullable: false),
-                    Altura = table.Column<float>(type: "REAL", nullable: false),
                     Classificacao = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
@@ -32,7 +30,10 @@ namespace ProvaAPI.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Nome = table.Column<string>(type: "TEXT", nullable: true),
                     DataDeNascimento = table.Column<string>(type: "TEXT", nullable: true),
-                    IMCId = table.Column<int>(type: "INTEGER", nullable: false)
+                    IMCId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Classificacao = table.Column<int>(type: "INTEGER", nullable: false),
+                    Peso = table.Column<float>(type: "REAL", nullable: false),
+                    Altura = table.Column<float>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,13 +48,13 @@ namespace ProvaAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "IMCs",
-                columns: new[] { "IMCId", "Altura", "Classificacao", "Peso", "ValorImc" },
-                values: new object[] { 1, 115f, "Magreza", 0f, 0f });
+                columns: new[] { "IMCId", "Classificacao", "ValorImc" },
+                values: new object[] { 1, "Magreza", 0f });
 
             migrationBuilder.InsertData(
                 table: "Alunos",
-                columns: new[] { "AlunoId", "DataDeNascimento", "IMCId", "Nome" },
-                values: new object[] { 1, "10 de Setembro de 2000", 1, "xuxu beleza" });
+                columns: new[] { "AlunoId", "Altura", "Classificacao", "DataDeNascimento", "IMCId", "Nome", "Peso" },
+                values: new object[] { 1, 115f, 0, "10 de Setembro de 2000", 1, "xuxu beleza", 0f });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Alunos_IMCId",
